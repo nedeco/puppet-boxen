@@ -51,7 +51,9 @@ Puppet::Type.type(:repository).provide(:git) do
   end
 
   def expand_source(source)
-    if source =~ /\A\S+\/\S+\z/
+
+
+   if source =~ /\A[^@\/\s]+\/[^\/\s]+\z/
       "#{@resource[:protocol]}://github.com/#{source}"
     else
       source
